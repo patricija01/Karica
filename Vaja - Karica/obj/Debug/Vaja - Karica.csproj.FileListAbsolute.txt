@@ -1,0 +1,7 @@
+C:\Users\delac\source\repos\WideLabs\Vaja - Karica\Vaja - Karica\bin\Debug\Vaja - Karica.exe.config
+C:\Users\delac\source\repos\WideLabs\Vaja - Karica\Vaja - Karica\bin\Debug\Vaja - Karica.exe
+C:\Users\delac\source\repos\WideLabs\Vaja - Karica\Vaja - Karica\bin\Debug\Vaja - Karica.pdb
+C:\Users\delac\source\repos\WideLabs\Vaja - Karica\Vaja - Karica\obj\Debug\Vaja - Karica.csprojAssemblyReference.cache
+C:\Users\delac\source\repos\WideLabs\Vaja - Karica\Vaja - Karica\obj\Debug\Vaja - Karica.csproj.CoreCompileInputs.cache
+C:\Users\delac\source\repos\WideLabs\Vaja - Karica\Vaja - Karica\obj\Debug\Vaja - Karica.exe
+C:\Users\delac\source\repos\WideLabs\Vaja - Karica\Vaja - Karica\obj\Debug\Vaja - Karica.pdb
