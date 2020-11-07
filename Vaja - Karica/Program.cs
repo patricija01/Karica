@@ -4,67 +4,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//OPTIMIZACIJA KARICE
+//-vnos parno število: potrebno zmanjšat za 1
+//-vnos ločen od izvedbe
+//-dolgi if stavek ni smiseln in je nepregleden
+//-izris v funkcijo pokličeš samo, če je z vpisom vse vredu
+//-funkcija za pattern: z njo si prihranim for
+//-preseženo na 1 in -1
+//-zvezdice += (presezeno)*2 -> s tem se predznak obrne, zanka pa leti naprej
+
 namespace Karica
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Vnos()
         {
-            Console.WriteLine("Vpišite število med 3 in 40:");
             int stevilo = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
-            if (stevilo >= 3 && stevilo < 40)
+            //če je vneseno število parno, ga zmanjšamo za 1
+            if (stevilo % 2 == 0)
+                stevilo -= 1;
+
+            return stevilo;
+        }
+
+        static void Izris(int stevilo)
+        {
+            int presezeno = 1; //ko karica preseže polovico izrisa
+            int zvezdice = 1; //število zvezdic na začetku
+            int praznoPolje = (stevilo - 1) / 2;
+
+            string izpis = "";
+
+            for (int i = 0; i < stevilo; i++) //število vrstic je enako vpisanemu številu
             {
-                if (stevilo % 2 == 0) //če število ni liho, izpis ni podoben kvadratku
-                    Console.WriteLine("Izpis v obliki kvadrata ni mogoč.");
-                else
+                if (zvezdice == stevilo)
+                    presezeno = -1;
+
+                Console.Write(izpis.PadLeft(praznoPolje, ' '));            
+
+                if (presezeno == 1)
                 {
-                    int prazno_polje_pred_zvezdicami = (stevilo - 1) / 2; //število praznih polj v prvi vrsti na eni strani kvadratka
-                    int presezeno = 0;
-                    int stevilo_zvezdic = 1; //začnemo z 1, nato vedno za 2 povečamo - dokler ne dosežemo vpisanega števila, nato za 2 zmanjšujemo
+                    Console.Write(izpis.PadLeft(zvezdice, '+'));
+                    praznoPolje--;
+                }
+                else if (presezeno == -1)
+                {
+                    Console.Write(izpis.PadLeft(zvezdice, '+'));
+                    praznoPolje++;
+                }
+                
+                zvezdice += (presezeno) * 2;
+                
+                Console.WriteLine();
+            }
+        }
 
-                    for (int i = 0; i < stevilo; i++) //število vrstic je enako vpisanemu številu
-                    {
-                        //najprej napišemo prazna polja pred zvezdicami
-                        for (int x = 0; x < prazno_polje_pred_zvezdicami; x++)
-                            Console.Write(" ");
-
-                        if (presezeno == 0) //ni še najdaljša vrstica z zvezdicami
-                            prazno_polje_pred_zvezdicami -= 1;
-                        else //ko presežemo začnemo povečevat razmake
-                            prazno_polje_pred_zvezdicami += 1;
-
-                        //zvezdice                         
-                        if (presezeno == 0)
-                        { //če še nismo dosegli najdaljše vrstice z zvezdicami
-                            for (int j = 0; j < stevilo_zvezdic; j++)
-                            {
-                                Console.Write("*");
-                            }
-                            stevilo_zvezdic += 2; //vedno dve več
-                            if (stevilo_zvezdic == stevilo) //dosegli smo najdaljšo vrstico z zvezdicami, začnemo zmanjševat
-                            {
-                                presezeno = 1;
-                                prazno_polje_pred_zvezdicami = 1;
-                                //srednja vrstica s številom zvezdic enakemu vnesenemu številu
-                                Console.WriteLine();
-                                for (int y = 0; y < stevilo_zvezdic; y++)
-                                    Console.Write("*");
-                            }
-                        }
-                        else
-                        {
-                            for (int j = stevilo_zvezdic - 2; j >= 1; j--) //od vnesenega števila do 1 zvezdice
-                            {
-                                Console.Write("*");
-                            }
-                            stevilo_zvezdic -= 2; //vedno dve manj, dokler ni samo ena
-                        }
-                        Console.WriteLine();
-                    }
+        static void Main(string[] args)
+        {
+            int x; //vnos
+            while (true) //dokler ni z vpisom vse ok 
+            {                
+                try
+                {
+                    Console.Write("Vpišite število med 3 in 40: ");
+                    x = Vnos();                    
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("Napaka pri vpisu.");
                 }
             }
+
+            if (x >= 3 && x <= 40)
+                Izris(x);
+            else Console.WriteLine("Vneseno število je izven zahtevanih parametrov.");
+
             Console.ReadKey(true);
         }
     }
