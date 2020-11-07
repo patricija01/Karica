@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 //-funkcija za pattern: z njo si prihranim for
 //-preseženo na 1 in -1
 //-zvezdice += (presezeno)*2 -> s tem se predznak obrne, zanka pa leti naprej
+//-izogibaj se neskončnih zank
 
 namespace Karica
 {
@@ -46,12 +47,12 @@ namespace Karica
 
                 if (presezeno == 1)
                 {
-                    Console.Write(izpis.PadLeft(zvezdice, '+'));
+                    Console.Write(izpis.PadLeft(zvezdice, '*'));
                     praznoPolje--;
                 }
-                else if (presezeno == -1)
+                else //presezeno == -1
                 {
-                    Console.Write(izpis.PadLeft(zvezdice, '+'));
+                    Console.Write(izpis.PadLeft(zvezdice, '*'));
                     praznoPolje++;
                 }
                 
@@ -63,24 +64,26 @@ namespace Karica
 
         static void Main(string[] args)
         {
-            int x; //vnos
-            while (true) //dokler ni z vpisom vse ok 
-            {                
+            int x = 0; //vnos
+            
+            do
+            {
                 try
                 {
                     Console.Write("Vpišite število med 3 in 40: ");
-                    x = Vnos();                    
+                    x = Vnos();
                     break;
                 }
                 catch
                 {
                     Console.WriteLine("Napaka pri vpisu.");
+                    Console.WriteLine("Za prekinitev programa vnesi 0.");
                 }
-            }
+            } while (x == 0);
 
             if (x >= 3 && x <= 40)
                 Izris(x);
-            else Console.WriteLine("Vneseno število je izven zahtevanih parametrov.");
+            else Console.WriteLine("Vnos je izven zahtevanih parametrov.");            
 
             Console.ReadKey(true);
         }
