@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DA628429-857A-4191-9019-B292E81EC365}</ProjectGuid>
+    <ProjectGuid>{97567451-23F3-464A-B1B1-C162EC3F04A1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Vaja___Karica</RootNamespace>
-    <AssemblyName>Vaja - Karica</AssemblyName>
+    <RootNamespace>Vaja___Karica_2.del</RootNamespace>
+    <AssemblyName>Vaja___Karica_2.del</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
