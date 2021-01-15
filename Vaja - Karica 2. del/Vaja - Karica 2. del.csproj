@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Karica.cs" />
     <Compile Include="KaricaObroba.cs" />
+    <Compile Include="Karo.cs" />
     <Compile Include="ParniZmaj.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
